@@ -660,7 +660,7 @@ class BaseDataset(Dataset):
     def _load_combined_attributes(self):
         """This function loads data set specific attributes and combines them with hydroatlas attributes"""
         dfs = []
-
+	
         # load dataset specific attributes from the subclass
         if self.cfg.static_attributes:
             df = self._load_attributes()
@@ -673,6 +673,7 @@ class BaseDataset(Dataset):
 
             # in case of training (not finetuning) check for NaNs in feature std.
             if self._compute_scaler:
+		print("This is base dataset")
                 utils.attributes_sanity_check(df=df)
 
             dfs.append(df)
